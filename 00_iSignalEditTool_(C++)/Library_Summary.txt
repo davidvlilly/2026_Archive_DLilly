@@ -1,0 +1,69 @@
+================================================================================
+  iSignalEditTool - Library Dependencies
+  Generated: 2026-02-16
+================================================================================
+
+THIRD-PARTY LIBRARIES (via vcpkg, x64-windows-static)
+================================================================================
+
+  ImGui 1.91.9 (MIT License)
+    Immediate-mode graphical user interface library. Provides windows,
+    menus, buttons, tooltips, and text rendering. Used for all UI
+    elements in the application. Includes Win32 and DirectX 11 backends
+    for platform integration.
+
+  ImPlot 0.16 (MIT License)
+    Plotting library built on top of ImGui. Provides interactive 2D
+    plots with zoom, pan, and mouse interaction. Used to display the
+    signal waveform with colored segments and editing overlays.
+
+  HDF5 1.14.6 — C++ API (BSD-3-Clause License)
+    Hierarchical Data Format library for reading and writing structured
+    scientific data files. Used via iFileIO to load and save H5A signal
+    files containing time series, magnitude data, and state annotations.
+
+  zlib 1.3.1 (zlib License)
+    Compression library. Required by HDF5 for internal data compression
+    of datasets within H5A files.
+
+  libaec 1.1.3 (BSD-2-Clause License)
+    Adaptive Entropy Coding library providing Szip compression. Required
+    by HDF5 as an additional compression option for datasets.
+
+WINDOWS SYSTEM LIBRARIES  ( Runtime version on all win 11 computers)
+================================================================================
+
+  d3d11.lib
+    DirectX 11 graphics API. Provides GPU-accelerated rendering for the
+    application window, used by ImGui's DirectX 11 backend.
+
+  dxgi.lib
+    DirectX Graphics Infrastructure. Manages swap chains and display
+    adapters. Required by the DirectX 11 rendering pipeline.
+
+  shlwapi.lib
+    Shell Lightweight Utility API. Provides string and path helper
+    functions. Required by HDF5 internally.
+
+  comdlg32.lib
+    Common Dialog library. Provides the Windows file Open/Save dialogs
+    used by iFileIO for file selection.
+
+  shell32.lib
+    Windows Shell API. Provides folder browsing dialogs and shell
+    operations used by iFileIO.
+
+  ole32.lib
+    COM runtime library. Required for COM initialization used by the
+    Windows file dialogs.
+
+PROJECT-INTERNAL LIBRARIES
+================================================================================
+
+  iFileIO
+    Custom library (source at ../iFileIO/). Provides HDF5 file I/O
+    operations for loading and saving H5A format signal files, Windows
+    file dialogs, and HDF5 file structure inspection. Compiled directly
+    into the application from source.
+
+================================================================================

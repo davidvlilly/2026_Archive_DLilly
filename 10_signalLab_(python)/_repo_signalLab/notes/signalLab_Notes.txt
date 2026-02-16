@@ -1,0 +1,69 @@
+File: signalLab_Notes.txt
+Date: 1/4/2026
+Description:
+	Describe the signalLab python software tool in detail.
+	Curretn system assumes that the magR signal data is fixed at 30Hz, and the analysis segment interval is 1 second
+	
+Folder Layout:
+
+signalLab (project_root)/
+├── signalLab.py
+├── siglab_lib/
+│   ├── __init__.py
+│   ├── fileIO.py				read/write files
+│   ├── mainWinSupport.py		main window action support ; menu-bar, tool-bar
+│   ├── statsCalc.py			calculate statistics (min,max,mean,blood_level_estimate,etc...)
+│   ├── higuchiCalc.py			calculate the higuchi params from the signal data
+│   ├── extWinStats.py			external window tool that plots the MinMaxdMean & Blood_est
+│   ├── extWinHiguchi.py		external window tool that plots the higuchi params
+│   └── extWinScatter.py		external window tool that plots 2D scatter plots
+└── notes/
+	├── signalLab_Notes.txt
+	└── README.md
+
+Main Window Description:
+
+The main window has a menu-bar, Tool-bar and , a main plot area  
+	Menu-bar
+		File (Open,Save,SaveAs,Exit)
+		Calc (Stats,higuchi, All)
+		Plot (Stats, higuchi,Scatter)
+	Tool-bar (Radio Buttons)
+		unknown (gray)
+		Blood1 (Green)
+		Blood2 (cyan)
+		Step   (black)
+		Wall   (Blue)
+		Clot   (Orange)
+	Help
+		About
+		
+State Enumeration Codes:
+
+	0	unknown (gray)	
+	1	Blood1  (Green)	
+	2	Blood2  (cyan)	
+	3	Step    (black)	
+	4	Wall    (Blue)	
+	5	Clot    (Orange)	
+		
+Input File Format:
+
+HDF5 Format File( Extension .f5b)
+	signal/magR;  			Shape: (vecLen,) 	Dtype: float32
+	signal/sample_rate_Hz;	Shape: (scaler) 	Dtype: float32
+	signal/time_S;			Shape: (vecLen,) 	Dtype: float32
+	tag/dec_rate;			Shape: (scaler) 	Dtype: float32
+	tag/sample_rate_Hz;		Shape: (scaler) 	Dtype: float64
+	tag/state;				Shape: (vecLen,) 	Dtype: float32
+	tag/state_names;		Shape: (vecLen) 	Dtype: S38
+	tag/time_S:				Shape: (vecLen,) 	Dtype: float32
+
+Main Data Structures:
+
+	sigStateTru				Original data from case .f5b case fileIO; magR,time_S,state
+	statsCalc				statistics of signal; min,max,mean,range,begVal,endVal, 
+							bloodEstMean,bloodEstRng
+	higuchiPrm				Higuchi Complexity Dim.(HCD)parameters; hcdMean & hcdSlope
+	sigStateEst				Estiamted states
+	

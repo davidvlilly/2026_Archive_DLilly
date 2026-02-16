@@ -1,0 +1,34 @@
+PYTHON CONFIGURATION NOTES
+
+* Python Configuration overview
+python --version
+    Python 3.12.8
+pip uninstall numpy tensorflow keras
+pip install numpy==1.26.3 --only-binary=:all:  
+pip install tensorflow==2.20.0
+pip install keras==3.13.0
+
+* virtual enviornment
+create:   	python -m venv venv_name
+activate  	venv_name\Scripts\activate
+deactivate:	deactivate 
+remove:  	rmdir /s /q venv_name 
+
+* save/restore configuration with;
+pip freeze > python_config.txt
+pip install -r python_config.txt
+
+* Example batch file to launch terminal with virtual enviornment
+@echo off
+REM Open CMD with virtual environment ready
+start cmd.exe /K "C:\...\venv\Scripts\activate.bat"
+:: Misc Command References
+:: python --version
+:: pip list
+:: python.exe -m pip install --upgrade pip
+
+* Example batch file to launch IDLE ( locate bat at desired PWD )
+@echo off
+REM Activate the virtual environment and launch IDLE
+call C:\...\venv\Scripts\activate.bat
+start pythonw -m idlelib.idle
