@@ -1,0 +1,57 @@
+================================================================================
+                    OLLAMA LOCAL LLM SETUP SUMMARY
+                    For: Dell Precision 3660 / RTX A2000 12GB
+                    Date: 2026-02-16
+================================================================================
+
+WHAT IS OLLAMA?
+  Ollama is a free, open-source tool that lets you run large language models
+  (LLMs) locally on your computer using your NVIDIA GPU for acceleration.
+  Made by Ollama, Inc. Website: https://ollama.com
+
+INSTALL:
+  From any terminal:
+    winget install Ollama.Ollama
+  Close and reopen terminal after install.
+  Verify with: ollama --version
+
+HOW IT WORKS:
+  - Installs a background service (system tray icon) on port 11434
+  - Starts automatically with Windows
+  - CLI commands talk to this service
+  - Models download once, stored locally for reuse
+  - Auto-detects your GPU and offloads model layers to VRAM
+
+RECOMMENDED FIRST MODEL:
+  ollama pull phi4
+  ollama run phi4
+
+  Microsoft Phi-4 (14B parameters) — strong at Python code generation,
+  reasoning, and general conversation. Fits in 12GB VRAM with quantization.
+
+OTHER MODELS TO TRY:
+  ollama pull llama3.1:8b       Meta Llama 3.1 — good general purpose
+  ollama pull codellama:13b     Code-focused variant of Llama
+
+COMMON COMMANDS:
+  ollama list                   Show downloaded models
+  ollama run <model>            Start interactive chat with a model
+  ollama ps                     Show what's currently loaded in memory
+  ollama rm <model>             Delete a downloaded model
+  /bye                          Exit an interactive chat session
+
+BROWSE ALL AVAILABLE MODELS:
+  https://ollama.com/library
+
+OPTIONAL BROWSER UI:
+  Open WebUI — provides a ChatGPT-like web interface for your local models.
+  Connects to the Ollama service on port 11434.
+
+NOTES:
+  - Your 12GB VRAM handles 8B-14B parameter models well
+  - Larger models (30B+) will spill into system RAM (slower but functional
+    with your 128GB RAM)
+  - Models are quantized (compressed) to fit in VRAM with minimal quality loss
+  - No CUDA toolkit install needed — your existing NVIDIA driver is sufficient
+
+================================================================================
