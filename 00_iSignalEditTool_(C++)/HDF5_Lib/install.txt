@@ -1,0 +1,10 @@
+Place the file at 
+C:\xSWDEV\vcpkg\downloads\k202009-libaec-v1.1.6.tar.gz (exact name)
+
+Run:
+   cd C:\xSWDEV\10_example_cpp_gui
+   C:\xSWDEV\vcpkg\vcpkg.exe install --triplet x64-windows-static
+   
+vcpkg will skip the download, 
+verify the hash, then move on to building libaec, 
+then imgui, implot, and HDF5. Have a good weekend.
